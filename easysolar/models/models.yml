@@ -9,6 +9,8 @@ models:
     meta:
       owner: "@Tunde"
       model_maturity: in dev
+    config:
+      materialized: table
 
     columns:
       - name: customer_id
