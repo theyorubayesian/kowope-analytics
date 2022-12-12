@@ -4,6 +4,7 @@ create-env:
 	python -m venv env
 	pip install --upgrade pip
 	pip install -r requirements.txt
+	cp .envexample .env
 
 create-dev-env:	create-env
 	pip install -r dev-requirements.text
