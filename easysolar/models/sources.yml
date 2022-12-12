@@ -1,0 +1,78 @@
+version: 2
+
+sources:
+  - name: facts
+    description: Postgres presumably used by Superstore computers
+    database: easysolar
+    schema: interview2
+    loaded_at_field: date_loaded
+    freshness:
+      warn_after:
+        count: 24
+        period: hour
+    
+    tables:
+      - name: fact_order
+        columns:
+          - name: order_id
+            description: "The primary key for this table"
+            tests:
+              - unique
+              - not_null
+          
+          - name: product_id
+            description: "Identifier for the purchased product"
+            tests:
+              - not_null
+          
+          - name: customer_id
+            description: "Customer unique id"
+            tests:
+              - not_null
+
+  - name: dimensions
+    description: Postgres presumably used by Superstore computers
+    database: easysolar
+    schema: interview2
+    loaded_at_field: date_loaded
+
+    tables:
+      - name: dim_customer
+        meta:
+          contains_pii: true
+        columns:
+          - name: customer_id
+            description: "Customer unique id"
+            tests:
+              - not_null
+
+          - name: customer_name
+            meta:
+              contains_pii: true
+          
+          - name: postal_code
+            meta:
+              contains_pii: true
+
+          - name: city
+            meta:
+              contains_pii: true
+            
+          - name: state
+            meta:
+              contains_pii: true
+          
+          - name: region
+            meta:
+              contains_pii: true
+
+          - name: country
+            meta:
+              contains_pii: true
+      
+      - name: dim_product
+        columns:
+          - name: product_id
+            description: "Product unique id"
+            tests:
+              - not_null

@@ -1,0 +1,26 @@
+
+version: 2
+
+models:
+  - name: customer_subcategory_pivot
+    description: "Provide customer x subcategory view of sales"
+    docs:
+      show: true
+    meta:
+      owner: "@Tunde"
+      model_maturity: in dev
+
+    columns:
+      - name: customer_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: orders_with_product_info
+    description: "View of Orders with product information"
+    docs:
+      show: true
+    meta:
+      owner: "@Tunde"
+      model_maturity: in dev
